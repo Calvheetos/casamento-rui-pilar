@@ -178,12 +178,12 @@
     .garland-img { display: block; width: min(540px, 100%); height: auto; margin: -8px auto 18px; }
     .garland-img--bottom { margin: 28px auto -4px; transform: rotate(180deg); }
     .reset { display: none; }
-    .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1.5px solid rgba(41,70,124,.72); outline: 1px dashed rgba(169,52,40,.5); outline-offset: -7px; border-radius: 18px 30px 16px 27px / 24px 15px 28px 17px; background: rgba(255,250,238,.62); text-align: left; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
+    .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1.5px solid rgba(41,70,124,.72); outline: 1px dashed rgba(169,52,40,.5); outline-offset: -7px; border-radius: 18px 30px 16px 27px / 24px 15px 28px 17px; background: rgba(255,250,238,.62); text-align: center; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
     .rsvp h3 { margin: 0; text-align: center; font-family: Montserrat, sans-serif; font-size: clamp(1.5rem, 6vw, 2.3rem); font-weight: 300; letter-spacing: .1em; text-transform: uppercase; }
     .rsvp-intro { margin: 10px 0 27px; text-align: center; font-family: Montserrat, sans-serif; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; }
     .field { margin-bottom: 20px; }
     .field > label, .field legend { display: block; margin-bottom: 8px; color: var(--red); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; }
-    .field input, .field select, .field textarea { width: 100%; padding: 13px 2px; border: 0; border-bottom: 1px solid rgba(182,44,44,.45); border-radius: 0; color: #492c27; background: transparent; font: 400 .92rem Montserrat, sans-serif; outline: none; }
+    .field input, .field select, .field textarea { width: 100%; padding: 13px 2px; border: 0; border-bottom: 1px solid rgba(182,44,44,.45); border-radius: 0; color: #492c27; background: transparent; font: 400 .92rem Montserrat, sans-serif; text-align: center; outline: none; }
     .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--red); box-shadow: 0 2px 0 -1px var(--red); }
     .field textarea { min-height: 76px; resize: vertical; }
     .choice-field { padding: 0; border: 0; }
@@ -192,7 +192,7 @@
     .choice input { position: absolute; opacity: 0; }
     .choice:has(input:checked) { color: white; background: var(--red); border-color: var(--red); }
     .choice span { font-size: .72rem; text-align: center; }
-    .consent { display: flex; gap: 10px; align-items: flex-start; margin: 22px 0; color: #68524a; font-size: .66rem; line-height: 1.5; }
+    .consent { display: flex; justify-content: center; gap: 10px; align-items: flex-start; margin: 22px auto; color: #68524a; font-size: .66rem; line-height: 1.5; text-align: center; }
     .consent input { margin-top: 2px; accent-color: var(--red); }
     .submit-rsvp { display: block; width: 100%; padding: 15px 20px; border: 0; color: white; background: var(--red); font-size: .67rem; font-weight: 500; letter-spacing: .17em; text-transform: uppercase; cursor: pointer; transition: transform .2s ease, background .2s ease; }
     .submit-rsvp:hover { background: #922020; transform: translateY(-2px); }
