@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8ef">
+  <title>Rui & Pilar — Save the Date</title>
+  <meta name="description" content="Reserva a data: Rui e Pilar casam a 12 de julho de 2027.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root { --blue: #3138b7; --cream: #fbf8ef; --ink: #252b8f; }
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body { margin: 0; color: var(--blue); background: var(--cream); font-family: Montserrat, sans-serif; }
+    button { font: inherit; }
+
+    .screen {
+      position: fixed;
+      inset: 0;
+      min-height: 100svh;
+      overflow: auto;
+      background:
+        radial-gradient(circle at 25% 15%, rgba(255,255,255,.92), transparent 34%),
+        repeating-radial-gradient(circle at 30% 40%, rgba(45,56,183,.018) 0 1px, transparent 1px 4px),
+        var(--cream);
+    }
+
+    .landing {
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      padding: 40px 22px;
+      transition: opacity .6s ease, transform .8s cubic-bezier(.22,1,.36,1);
+    }
+
+    .landing-inner { width: min(460px, 100%); text-align: center; animation: arrive 1s ease both; }
+    .mail { margin: 0 0 3px; font-family: Allura, cursive; font-size: clamp(2rem, 8vw, 3rem); }
+    .from { margin: 0 0 30px; font-size: .64rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; }
+    .couple { margin: 0; font-family: Allura, cursive; font-size: clamp(3.5rem, 15vw, 6.2rem); font-weight: 400; line-height: .82; transform: rotate(-3deg); }
+    .couple .and { display: inline-block; font-size: .56em; transform: translateY(-4px); }
+
+    .open-button {
+      display: block;
+      width: 255px;
+      margin: 34px auto 0;
+      padding: 0;
+      border: 0;
+      color: var(--blue);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .open-button svg { display: block; width: 100%; overflow: visible; transition: transform .3s ease; }
+    .open-button:hover svg { transform: translateY(-5px) rotate(-1deg); }
+    .open-button:focus-visible { outline: 2px solid var(--blue); outline-offset: 12px; border-radius: 2px; }
+    .click-note { display: block; margin-top: 12px; font-family: Allura, cursive; font-size: 1.2rem; }
+    .landing-leaf { position: fixed; width: 120px; opacity: .22; pointer-events: none; }
+    .leaf-a { top: -18px; left: -34px; transform: rotate(28deg); }
+    .leaf-b { right: -33px; bottom: -25px; transform: rotate(206deg); }
+
+    .transition-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      visibility: hidden;
+      background: rgba(251,248,239,.96);
+      opacity: 0;
+      transition: opacity .3s ease;
+      perspective: 1000px;
+    }
+
+    .animating .transition-layer { visibility: visible; opacity: 1; }
+    .animating .landing { opacity: 0; transform: scale(.96); }
+    .revealed .landing {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-24px);
+    }
+
+    .mini-envelope { position: relative; width: min(340px, 78vw); aspect-ratio: 1.5; filter: drop-shadow(0 20px 22px rgba(48,56,183,.12)); }
+    .mini-back { position: absolute; inset: 0; border: 2px solid var(--blue); background: var(--cream); }
+    .mini-card {
+      position: absolute;
+      z-index: 2;
+      left: 7%; bottom: 5%;
+      width: 86%; height: 87%;
+      display: grid; place-items: center;
+      border: 1.5px solid var(--blue);
+      background: var(--cream);
+      font-family: Allura, cursive;
+      font-size: 2.2rem;
+      transition: transform 1s cubic-bezier(.22,1,.36,1) .65s;
+    }
+    .mini-flap { position: absolute; z-index: 4; inset: 0 0 48%; border: 2px solid var(--blue); background: var(--cream); clip-path: polygon(0 0,100% 0,50% 100%); transform-origin: top; transition: transform .65s ease .15s, z-index 0s .47s; }
+    .mini-front { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+    .mini-front::before,.mini-front::after { content:""; position:absolute; inset:0; background:var(--cream); border:2px solid var(--blue); }
+    .mini-front::before { clip-path: polygon(0 0,54% 100%,0 100%); }
+    .mini-front::after { clip-path: polygon(100% 0,46% 100%,100% 100%); }
+    .mini-bottom { position:absolute; z-index:3; inset:38% 0 0; background:var(--cream); border:2px solid var(--blue); clip-path:polygon(0 100%,50% 5%,100% 100%); }
+    .animating .mini-flap { transform: rotateX(180deg); z-index: 1; }
+    .animating .mini-card { transform: translateY(-88%); }
+    .transition-layer.fade-away { opacity: 0; }
+
+    .invite {
+      z-index: 1;
+      position: relative;
+      min-height: 100svh;
+      padding: 44px 22px 70px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .9s cubic-bezier(.22,1,.36,1);
+    }
+
+    .revealed .invite { opacity: 1; visibility: visible; transform: none; }
+    .invite-inner { width: min(560px, 100%); margin: auto; text-align: center; }
+    .top-note { margin: 0 0 4px; font-family: Allura, cursive; font-size: 1.2rem; }
+    .save { margin: 0; font-family: "Cormorant Garamond", serif; font-size: clamp(2.35rem, 10vw, 4.15rem); font-weight: 400; letter-spacing: .05em; line-height: 1; text-transform: uppercase; }
+    .save em { display: inline-block; margin: 0 -.08em; font-family: Allura, cursive; font-size: .78em; font-weight: 400; text-transform: none; transform: rotate(-7deg) translateY(-2px); }
+    .date-row { display: flex; justify-content: center; align-items: center; gap: 19px; margin-top: 22px; }
+    .date-row span { min-width: 72px; font-size: .61rem; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; }
+    .date-row strong { padding: 0 18px; border-inline: 1px solid var(--blue); font-family: "Cormorant Garamond", serif; font-size: 3.2rem; font-weight: 400; line-height: .9; }
+    .year { margin: 12px 0 0; font-size: .69rem; letter-spacing: .38em; }
+
+    .cherub { width: 72px; margin: 26px auto 20px; }
+    .cherub path,.cherub circle { fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    .photo-frame { position: relative; width: min(390px, 88vw); aspect-ratio: 1.42; margin: 0 auto; border-radius: 50%; overflow: hidden; }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; filter: saturate(.25) contrast(.93); }
+    .photo-frame::after { content:""; position:absolute; inset:0; border:1px solid rgba(49,56,183,.3); border-radius:inherit; box-shadow:inset 0 0 25px rgba(251,248,239,.35); }
+
+    .final-names { margin: 35px 0 7px; font-family: Allura, cursive; font-size: clamp(3rem, 12vw, 5rem); font-weight: 400; line-height: .8; transform: rotate(-3deg); }
+    .flower { width: 92px; margin: 7px auto 24px; }
+    .flower path,.flower circle { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .more { margin: 0; font-family: Allura, cursive; font-size: 1.25rem; }
+    .reset { margin-top: 27px; padding: 10px 17px; border: 1px solid var(--blue); color: var(--blue); background: transparent; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; }
+
+    @keyframes arrive { from { opacity:0; transform:translateY(18px); } }
+    @media (max-height: 670px) { .landing-inner { transform: scale(.84); } .invite { padding-top:28px; } }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; transition-delay:0s!important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="screen landing" id="landing" aria-label="Abrir o convite">
+      <svg class="landing-leaf leaf-a" viewBox="0 0 100 160" aria-hidden="true"><path d="M52 158C50 107 45 61 18 5M44 114C23 104 15 89 8 69M47 87C69 75 79 57 87 36M35 67C22 58 15 45 12 31M48 99C64 95 78 84 91 68" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <svg class="landing-leaf leaf-b" viewBox="0 0 100 160" aria-hidden="true"><path d="M52 158C50 107 45 61 18 5M44 114C23 104 15 89 8 69M47 87C69 75 79 57 87 36M35 67C22 58 15 45 12 31M48 99C64 95 78 84 91 68" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <div class="landing-inner">
+        <p class="mail">Recebeste corre</p>
+        <p class="from">de</p>
+        <h1 class="couple">Rui <span class="and">&amp;</span> Pilar</h1>
+        <button class="open-button" id="openInvite" type="button" aria-label="Abrir o envelope e ver o Save the Date">
+          <svg viewBox="0 0 280 205" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M25 73 139 5l116 68v111H25Z"/>
+              <path d="m26 75 113 74L254 74M26 183l79-64M254 183l-80-64"/>
+              <path d="M77 138c16-27 42-23 63 11-8 18-31 31-55 36 8-20 9-34-8-47Z"/>
+              <path d="M201 138c-16-27-42-23-62 11 8 18 31 31 55 36-8-20-9-34 7-47Z"/>
+              <path d="M113 135c12-9 40-9 53 0M121 154c-19 21-30 34-34 49M158 154c18 20 30 34 34 49"/>
+            </g>
+          </svg>
+          <span class="click-note">toca para abrir</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="transition-layer" id="transitionLayer" aria-hidden="true">
+      <div class="mini-envelope">
+        <div class="mini-back"></div><div class="mini-card">R &amp; P</div><div class="mini-flap"></div><div class="mini-front"></div><div class="mini-bottom"></div>
+      </div>
+    </div>
+
+    <section class="screen invite" id="invite" aria-label="Save the Date de Rui e Pilar">
+      <div class="invite-inner">
+        <p class="top-note">guarda esta data</p>
+        <h2 class="save">Save <em>the</em> Date</h2>
+        <div class="date-row"><span>segunda-feira</span><strong>12</strong><span>julho</span></div>
+        <p class="year">2027</p>
+        <svg class="cherub" viewBox="0 0 100 78" aria-hidden="true"><circle cx="39" cy="25" r="10"/><path d="M32 17c3-8 15-9 19-1M32 29c-8 3-14 12-14 22 10-9 18-10 25-7M45 34c10 2 18 8 27 18M48 38c7-13 18-18 31-15-7 6-11 14-11 23M39 46c-6 10-14 16-25 18M52 45c-1 12-7 22-17 29M67 51l19-13M67 51l19 6"/></svg>
+        <figure class="photo-frame"><img src="assets/mesa-casamento.jpg" alt="Ambiente de casamento ao ar livre com mesas decoradas em tons vermelhos"></figure>
+        <h3 class="final-names">Rui &amp; Pilar</h3>
+        <svg class="flower" viewBox="0 0 100 115" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M49 109C51 81 49 55 53 28M50 74C36 67 29 58 25 46M51 64C65 58 72 49 78 38M48 88C62 85 72 77 81 66"/><circle cx="53" cy="23" r="9"/><path d="M53 14c-3-10 8-11 8-1 8-7 14 3 5 8 10 4 5 13-3 9-1 10-12 8-11-1-9 5-14-5-5-10-7-6-1-13 6-5ZM25 46c-12-5-16 7-5 10-6 9 7 14 11 4M78 38c11-7 17 4 7 10 8 8-4 15-10 6M81 66c11-5 15 7 4 11"/></g></svg>
+        <p class="more">Mais detalhes em breve</p>
+        <button class="reset" id="resetInvite" type="button">Ver novamente</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const body = document.body;
+    const openInvite = document.querySelector('#openInvite');
+    const resetInvite = document.querySelector('#resetInvite');
+    const transitionLayer = document.querySelector('#transitionLayer');
+
+    function revealInvite() {
+      body.classList.add('animating');
+      window.setTimeout(() => transitionLayer.classList.add('fade-away'), 1500);
+      window.setTimeout(() => {
+        body.classList.add('revealed');
+        body.classList.remove('animating');
+        transitionLayer.classList.remove('fade-away');
+        document.querySelector('#invite').scrollTop = 0;
+      }, 2000);
+    }
+
+    function reset() {
+      body.classList.remove('revealed');
+      document.querySelector('#landing').scrollTop = 0;
+      openInvite.focus({ preventScroll: true });
+    }
+
+    openInvite.addEventListener('click', revealInvite);
+    resetInvite.addEventListener('click', reset);
+  </script>
+</body>
+</html>
