@@ -204,6 +204,44 @@
 
     @keyframes arrive { from { opacity:0; transform:translateY(18px); } }
     @media (max-height: 670px) { .landing-inner { transform: scale(.84); } .invite { padding-top:28px; } }
+    @media (max-width: 600px) {
+      html, body { width: 100%; overflow-x: hidden; }
+      .screen { width: 100%; }
+      .invite { padding: 10px 0 38px; }
+      .invite-inner { width: 100%; padding: 22px 18px 26px; }
+      .garland-img { width: calc(100% + 20px); max-width: none; margin: -8px -10px 15px; }
+      .garland-img--bottom { margin-top: 22px; margin-bottom: -5px; }
+      .top-note { margin-bottom: 7px; font-size: .54rem; }
+      .save { font-size: clamp(1.55rem, 7.7vw, 2.25rem); letter-spacing: .075em; padding-left: .075em; white-space: nowrap; }
+      .save em { margin-inline: .01em; font-size: .42em; transform: translateY(-3px); }
+      .date-row { gap: 9px; margin-top: 18px; }
+      .date-row span { min-width: 0; width: 88px; font-size: .52rem; letter-spacing: .1em; }
+      .date-row strong { padding: 0 14px; font-size: 2.35rem; }
+      .year { margin-top: 10px; }
+      .photo-frame { width: min(82vw, 340px); margin-block: 18px; }
+      .final-names { margin-top: 29px; font-size: clamp(1.65rem, 8vw, 2.35rem); letter-spacing: .065em; }
+      .flower { width: 76px; margin-bottom: 20px; }
+      .more { font-size: .56rem; line-height: 1.6; }
+      .rsvp { margin-top: 34px; padding: 29px 18px 25px; border-radius: 14px 22px 13px 20px / 19px 12px 22px 14px; }
+      .rsvp h3 { font-size: 1.45rem; }
+      .rsvp-intro { margin-bottom: 24px; font-size: .55rem; line-height: 1.5; }
+      .field { margin-bottom: 19px; }
+      .field > label, .field legend { font-size: .58rem; line-height: 1.45; }
+      .field input, .field select, .field textarea { min-height: 48px; font-size: 1rem; }
+      .field textarea { min-height: 82px; }
+      .choices { grid-template-columns: 1fr; gap: 8px; }
+      .choice { min-height: 50px; }
+      .consent { max-width: 280px; font-size: .62rem; }
+      .submit-rsvp { min-height: 52px; padding-inline: 12px; font-size: .62rem; }
+      .privacy { font-size: .54rem; }
+    }
+    @media (max-width: 360px) {
+      .invite-inner { padding-inline: 13px; }
+      .save { font-size: 1.45rem; }
+      .date-row span { width: 72px; font-size: .48rem; }
+      .date-row strong { padding-inline: 10px; }
+      .rsvp { padding-inline: 15px; }
+    }
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; transition-delay:0s!important; } }
   </style>
 </head>
