@@ -126,28 +126,15 @@
       width: min(590px, 100%);
       margin: auto;
       padding: clamp(28px, 6vw, 48px) clamp(18px, 5vw, 38px) 34px;
-      border: 2px solid var(--red);
-      outline: 1px solid var(--blue);
-      outline-offset: -9px;
+      border: 0;
+      outline: 0;
       background:
         repeating-radial-gradient(circle at 18% 23%, rgba(63,55,43,.022) 0 1px, transparent 1px 5px),
         rgba(255,250,238,.72);
-      box-shadow: 0 18px 55px rgba(94,58,32,.09);
+      box-shadow: none;
     }
     .invite-inner::before,
-    .invite-inner::after {
-      content: "✦  ·  ✦  ·  ✦";
-      position: absolute;
-      left: 50%;
-      color: var(--blue);
-      background: var(--cream);
-      padding: 0 9px;
-      font-size: .58rem;
-      letter-spacing: .28em;
-      transform: translateX(-50%);
-    }
-    .invite-inner::before { top: 4px; }
-    .invite-inner::after { bottom: 4px; }
+    .invite-inner::after { display: none; }
     .invite::before,
     .invite::after {
       content: "";
@@ -188,6 +175,8 @@
     .petal-red { stroke: var(--red); } .petal-pink { stroke: var(--red); }
     .petal-orange { stroke: var(--orange); } .petal-yellow { stroke: #bd8d1f; }
     .petal-blue { stroke: #29467c; } .leaf { stroke: #29467c; }
+    .garland-img { display: block; width: min(540px, 100%); height: auto; margin: -8px auto 18px; }
+    .garland-img--bottom { margin: 28px auto -4px; transform: rotate(180deg); }
     .reset { display: none; }
     .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1.5px solid rgba(41,70,124,.72); outline: 1px dashed rgba(169,52,40,.5); outline-offset: -7px; border-radius: 18px 30px 16px 27px / 24px 15px 28px 17px; background: rgba(255,250,238,.62); text-align: left; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
     .rsvp h3 { margin: 0; text-align: center; font-family: Montserrat, sans-serif; font-size: clamp(1.5rem, 6vw, 2.3rem); font-weight: 300; letter-spacing: .1em; text-transform: uppercase; }
@@ -250,19 +239,12 @@
 
     <section class="screen invite" id="invite" aria-label="Save the Date de Pilar e Rui">
       <div class="invite-inner">
-        <svg class="flowers" viewBox="0 0 440 105" aria-hidden="true">
-          <path class="stem" d="M18 92C77 91 103 67 130 42C153 21 184 18 220 47C256 18 287 21 310 42C337 67 363 91 422 92M37 89c14-5 23-15 30-29M64 79c-2-13 0-23 6-33M92 65c13-4 22-11 29-22M119 45c-1-12 2-22 9-30M403 89c-14-5-23-15-30-29M376 79c2-13 0-23 6-33M348 65c-13-4-22-11-29-22M321 45c1-12-2-22-9-30"/>
-          <path class="leaf" d="M45 86c-12-12-19-9-20-2 7 5 14 6 20 2ZM67 70c-11-14-18-11-19-4 7 6 13 7 19 4ZM96 60c-1-16 6-20 12-15 0 8-4 13-12 15ZM124 40c-7-15-1-21 6-18 3 7 1 13-6 18ZM395 86c12-12 19-9 20-2-7 5-14 6-20 2ZM373 70c11-14 18-11 19-4-7 6-13 7-19 4ZM344 60c1-16-6-20-12-15 0 8 4 13 12 15ZM316 40c7-15 1-21-6-18-3 7-1 13 6 18Z"/>
-          <path class="petal-red" d="M220 46c-15-8-18-22-8-26 4-2 7 1 8 6 1-5 4-8 8-6 10 4 7 18-8 26Z"/>
-          <path class="petal-blue" d="M160 23c-5-9 3-15 9-7 0-10 10-11 12-2 6-7 14-1 9 7 9 1 9 11 0 13 5 8-3 14-9 7-2 9-12 8-12-2-7 7-15 1-9-7-9-3-8-13 1-9Z"/>
-          <path class="petal-pink" d="M280 23c5-9-3-15-9-7 0-10-10-11-12-2-6-7-14-1-9 7-9 1-9 11 0 13-5 8 3 14 9 7 2 9 12 8 12-2 7 7 15 1 9-7 9-3 8-13-1-9Z"/>
-          <circle class="petal-yellow" cx="160" cy="27" r="2"/><circle class="petal-yellow" cx="280" cy="27" r="2"/>
-        </svg>
+        <img class="garland-img" src="assets/alentejo-garland.png" alt="Ilustração de ramos, flores campestres e um pássaro em estilo de cerâmica alentejana">
         <p class="top-note">guarda esta data</p>
         <h2 class="save">Save <em>the</em> Date</h2>
         <div class="date-row"><span>segunda-feira</span><strong>12</strong><span>julho</span></div>
         <p class="year">2027</p>
-        <svg class="cherub" viewBox="0 0 140 86" aria-hidden="true">
+        <svg class="cherub" viewBox="0 0 140 86" aria-hidden="true" style="display:none">
           <path d="M67 25c-5-8-16-5-15 4 1 7 15 16 18 19 3-3 17-12 18-19 1-9-10-12-15-4l-3 4Z"/>
           <path d="M62 48c-14-4-22-13-30-25 1 13 5 22 14 29-14 0-24-4-34-11 6 17 21 28 42 25 5-1 9-5 12-10"/>
           <path d="M78 48c14-4 22-13 30-25-1 13-5 22-14 29 14 0 24-4 34-11-6 17-21 28-42 25-5-1-9-5-12-10"/>
@@ -316,13 +298,7 @@
           </form>
           <p class="success" id="successMessage" role="status">Obrigada! A tua resposta foi enviada com sucesso.</p>
         </section>
-        <svg class="flowers flowers--bottom" viewBox="0 0 440 105" aria-hidden="true">
-          <path class="stem" d="M35 88c63-4 107-35 146-59 17-11 30-7 39 10 9-17 22-21 39-10 39 24 83 55 146 59M66 82c-3-13 0-24 9-33M100 70c13-3 23-10 31-21M139 50c-1-12 3-22 12-29M374 82c3-13 0-24-9-33M340 70c-13-3-23-10-31-21M301 50c1-12-3-22-12-29"/>
-          <path class="leaf" d="M74 71c-15-2-18 6-11 11 7-1 11-5 11-11ZM112 60c-1-15 7-18 12-11-1 7-5 11-12 11ZM150 39c-13-8-19-2-15 6 7 2 12 0 15-6ZM366 71c15-2 18 6 11 11-7-1-11-5-11-11ZM328 60c1-15-7-18-12-11 1 7 5 11 12 11ZM290 39c13-8 19-2 15 6-7 2-12 0-15-6Z"/>
-          <path class="petal-red" d="M220 41c-15-8-18-22-8-26 4-2 7 1 8 6 1-5 4-8 8-6 10 4 7 18-8 26Z"/>
-          <path class="petal-blue" d="M181 28c-3-8 5-12 9-5 1-8 10-8 11 0 7-5 13 2 7 8 8 2 6 11-2 11 3 8-5 12-10 5-2 8-11 7-11-1-6 6-13 0-8-6-8-2-6-10 2-8Z"/>
-          <path class="petal-pink" d="M259 28c3-8-5-12-9-5-1-8-10-8-11 0-7-5-13 2-7 8-8 2-6 11 2 11-3 8 5 12 10 5 2 8 11 7 11-1 6 6 13 0 8-6 8-2 6-10-2-8Z"/>
-        </svg>
+        <img class="garland-img garland-img--bottom" src="assets/alentejo-garland.png" alt="">
         <button class="reset" id="resetInvite" type="button">Ver novamente</button>
       </div>
     </section>
