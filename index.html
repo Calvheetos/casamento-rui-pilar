@@ -143,26 +143,26 @@
     .date-row strong { padding: 0 18px; border-inline: 1px solid var(--red); color: var(--red); font-family: Montserrat, sans-serif; font-size: 2.8rem; font-weight: 300; line-height: .9; }
     .year { margin: 12px 0 0; font-size: .69rem; letter-spacing: .38em; }
 
-    .cherub { width: 112px; margin: 21px auto 18px; color: var(--red); }
+    .cherub { width: 112px; margin: 21px auto 18px; color: #29467c; }
     .cherub path,.cherub circle { fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 
-    .photo-frame { position: relative; width: min(390px, 88vw); aspect-ratio: 1.42; margin: 0 auto; border-radius: 50%; overflow: hidden; }
+    .photo-frame { position: relative; width: min(390px, 84vw); aspect-ratio: 1.42; margin: 9px auto; border: 2px solid #29467c; outline: 1px dashed rgba(41,70,124,.7); outline-offset: 7px; border-radius: 50%; overflow: hidden; }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 27%; filter: saturate(.88) contrast(.96); }
-    .photo-frame::after { content:""; position:absolute; inset:0; border:1px solid rgba(49,56,183,.3); border-radius:inherit; box-shadow:inset 0 0 25px rgba(251,248,239,.35); }
+    .photo-frame::after { content:""; position:absolute; inset:5px; border:1px solid rgba(41,70,124,.5); border-radius:inherit; box-shadow:inset 0 0 25px rgba(251,248,239,.35); }
 
     .final-names { margin: 32px 0 12px; color: var(--red); font-family: Montserrat, sans-serif; font-size: clamp(1.8rem, 8vw, 3rem); font-weight: 300; line-height: 1.15; letter-spacing: .08em; text-transform: uppercase; }
-    .flower { width: 92px; margin: 7px auto 24px; }
+    .flower { width: 92px; margin: 7px auto 24px; color: #29467c; }
     .flower path,.flower circle { fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
     .more { margin: 0; font-family: Montserrat, sans-serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; }
     .flowers { display: block; width: min(430px, 96vw); margin: 0 auto 14px; overflow: visible; }
     .flowers--bottom { margin: 12px auto 4px; transform: rotate(180deg); }
-    .flowers * { fill: none; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-    .stem { stroke: var(--green); }
+    .flowers * { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+    .stem { stroke: #29467c; }
     .petal-red { stroke: var(--red); } .petal-pink { stroke: var(--pink); }
     .petal-orange { stroke: var(--orange); } .petal-yellow { stroke: #bd8d1f; }
-    .petal-blue { stroke: var(--blue); } .leaf { stroke: var(--green); }
+    .petal-blue { stroke: #29467c; } .leaf { stroke: #29467c; }
     .reset { display: none; }
-    .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1px solid rgba(182,44,44,.3); background: rgba(255,255,255,.4); text-align: left; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
+    .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1px solid rgba(41,70,124,.45); outline: 1px dashed rgba(182,44,44,.35); outline-offset: -7px; border-radius: 18px 30px 16px 27px / 24px 15px 28px 17px; background: rgba(255,255,255,.4); text-align: left; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
     .rsvp h3 { margin: 0; text-align: center; font-family: Montserrat, sans-serif; font-size: clamp(1.5rem, 6vw, 2.3rem); font-weight: 300; letter-spacing: .1em; text-transform: uppercase; }
     .rsvp-intro { margin: 10px 0 27px; text-align: center; font-family: Montserrat, sans-serif; font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; }
     .field { margin-bottom: 20px; }
@@ -224,13 +224,12 @@
     <section class="screen invite" id="invite" aria-label="Save the Date de Pilar e Rui">
       <div class="invite-inner">
         <svg class="flowers" viewBox="0 0 440 105" aria-hidden="true">
-          <path class="stem" d="M25 94C105 60 157 82 220 54 283 82 335 60 415 94M78 76c-1-22 4-38 16-54M142 68c-5-19-3-34 8-48M298 68c5-19 3-34-8-48M362 76c1-22-4-38-16-54"/>
-          <ellipse class="leaf" cx="67" cy="71" rx="15" ry="6" transform="rotate(-24 67 71)"/><ellipse class="leaf" cx="113" cy="66" rx="14" ry="6" transform="rotate(30 113 66)"/><ellipse class="leaf" cx="327" cy="66" rx="14" ry="6" transform="rotate(-30 327 66)"/><ellipse class="leaf" cx="373" cy="71" rx="15" ry="6" transform="rotate(24 373 71)"/>
-          <g transform="translate(94 23)"><circle class="petal-red" r="8" cy="-8"/><circle class="petal-red" r="8" cx="8"/><circle class="petal-red" r="8" cy="8"/><circle class="petal-red" r="8" cx="-8"/><circle class="petal-yellow" r="5"/></g>
-          <g transform="translate(150 20)"><circle class="petal-pink" r="7" cy="-7"/><circle class="petal-pink" r="7" cx="7"/><circle class="petal-pink" r="7" cy="7"/><circle class="petal-pink" r="7" cx="-7"/><circle class="petal-orange" r="4"/></g>
-          <g transform="translate(220 48)"><ellipse class="petal-orange" rx="10" ry="17" cy="-10"/><ellipse class="petal-red" rx="10" ry="17" cx="13" cy="5" transform="rotate(72 13 5)"/><ellipse class="petal-pink" rx="10" ry="17" cx="-13" cy="5" transform="rotate(-72 -13 5)"/><circle class="petal-yellow" r="6"/></g>
-          <g transform="translate(290 20)"><circle class="petal-blue" r="7" cy="-7"/><circle class="petal-blue" r="7" cx="7"/><circle class="petal-blue" r="7" cy="7"/><circle class="petal-blue" r="7" cx="-7"/><circle class="petal-yellow" r="4"/></g>
-          <g transform="translate(346 23)"><circle class="petal-yellow" r="8" cy="-8"/><circle class="petal-yellow" r="8" cx="8"/><circle class="petal-yellow" r="8" cy="8"/><circle class="petal-yellow" r="8" cx="-8"/><circle class="petal-red" r="5"/></g>
+          <path class="stem" d="M18 92C77 91 103 67 130 42C153 21 184 18 220 47C256 18 287 21 310 42C337 67 363 91 422 92M37 89c14-5 23-15 30-29M64 79c-2-13 0-23 6-33M92 65c13-4 22-11 29-22M119 45c-1-12 2-22 9-30M403 89c-14-5-23-15-30-29M376 79c2-13 0-23 6-33M348 65c-13-4-22-11-29-22M321 45c1-12-2-22-9-30"/>
+          <path class="leaf" d="M45 86c-12-12-19-9-20-2 7 5 14 6 20 2ZM67 70c-11-14-18-11-19-4 7 6 13 7 19 4ZM96 60c-1-16 6-20 12-15 0 8-4 13-12 15ZM124 40c-7-15-1-21 6-18 3 7 1 13-6 18ZM395 86c12-12 19-9 20-2-7 5-14 6-20 2ZM373 70c11-14 18-11 19-4-7 6-13 7-19 4ZM344 60c1-16-6-20-12-15 0 8 4 13 12 15ZM316 40c7-15 1-21-6-18-3 7-1 13 6 18Z"/>
+          <path class="petal-red" d="M220 46c-15-8-18-22-8-26 4-2 7 1 8 6 1-5 4-8 8-6 10 4 7 18-8 26Z"/>
+          <path class="petal-blue" d="M160 23c-5-9 3-15 9-7 0-10 10-11 12-2 6-7 14-1 9 7 9 1 9 11 0 13 5 8-3 14-9 7-2 9-12 8-12-2-7 7-15 1-9-7-9-3-8-13 1-9Z"/>
+          <path class="petal-pink" d="M280 23c5-9-3-15-9-7 0-10-10-11-12-2-6-7-14-1-9 7-9 1-9 11 0 13-5 8 3 14 9 7 2 9 12 8 12-2 7 7 15 1 9-7 9-3 8-13-1-9Z"/>
+          <circle class="petal-yellow" cx="160" cy="27" r="2"/><circle class="petal-yellow" cx="280" cy="27" r="2"/>
         </svg>
         <p class="top-note">guarda esta data</p>
         <h2 class="save">Save <em>the</em> Date</h2>
@@ -291,10 +290,11 @@
           <p class="success" id="successMessage" role="status">Obrigada! A tua resposta foi enviada com sucesso.</p>
         </section>
         <svg class="flowers flowers--bottom" viewBox="0 0 440 105" aria-hidden="true">
-          <path class="stem" d="M25 94C105 60 157 82 220 54 283 82 335 60 415 94"/>
-          <g transform="translate(95 69)"><circle class="petal-pink" r="9" cy="-8"/><circle class="petal-pink" r="9" cx="8"/><circle class="petal-pink" r="9" cy="8"/><circle class="petal-pink" r="9" cx="-8"/><circle class="petal-yellow" r="5"/></g>
-          <g transform="translate(220 48)"><ellipse class="petal-red" rx="11" ry="19" cy="-11"/><ellipse class="petal-orange" rx="11" ry="19" cx="14" cy="6" transform="rotate(72 14 6)"/><ellipse class="petal-yellow" rx="11" ry="19" cx="-14" cy="6" transform="rotate(-72 -14 6)"/><circle class="petal-pink" r="6"/></g>
-          <g transform="translate(345 69)"><circle class="petal-blue" r="9" cy="-8"/><circle class="petal-blue" r="9" cx="8"/><circle class="petal-blue" r="9" cy="8"/><circle class="petal-blue" r="9" cx="-8"/><circle class="petal-yellow" r="5"/></g>
+          <path class="stem" d="M35 88c63-4 107-35 146-59 17-11 30-7 39 10 9-17 22-21 39-10 39 24 83 55 146 59M66 82c-3-13 0-24 9-33M100 70c13-3 23-10 31-21M139 50c-1-12 3-22 12-29M374 82c3-13 0-24-9-33M340 70c-13-3-23-10-31-21M301 50c1-12-3-22-12-29"/>
+          <path class="leaf" d="M74 71c-15-2-18 6-11 11 7-1 11-5 11-11ZM112 60c-1-15 7-18 12-11-1 7-5 11-12 11ZM150 39c-13-8-19-2-15 6 7 2 12 0 15-6ZM366 71c15-2 18 6 11 11-7-1-11-5-11-11ZM328 60c1-15-7-18-12-11 1 7 5 11 12 11ZM290 39c13-8 19-2 15 6-7 2-12 0-15-6Z"/>
+          <path class="petal-red" d="M220 41c-15-8-18-22-8-26 4-2 7 1 8 6 1-5 4-8 8-6 10 4 7 18-8 26Z"/>
+          <path class="petal-blue" d="M181 28c-3-8 5-12 9-5 1-8 10-8 11 0 7-5 13 2 7 8 8 2 6 11-2 11 3 8-5 12-10 5-2 8-11 7-11-1-6 6-13 0-8-6-8-2-6-10 2-8Z"/>
+          <path class="petal-pink" d="M259 28c3-8-5-12-9-5-1-8-10-8-11 0-7-5-13 2-7 8-8 2-6 11 2 11-3 8 5 12 10 5 2 8 11 7 11-1 6 6 13 0 8-6 8-2 6-10-2-8Z"/>
         </svg>
         <button class="reset" id="resetInvite" type="button">Ver novamente</button>
       </div>
