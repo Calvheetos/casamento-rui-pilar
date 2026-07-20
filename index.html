@@ -161,6 +161,29 @@
     .petal-orange { fill: var(--orange); } .petal-yellow { fill: var(--yellow); }
     .petal-blue { fill: var(--blue); } .leaf { fill: var(--green); }
     .reset { display: none; }
+    .rsvp { margin: 42px auto 12px; padding: clamp(25px, 6vw, 42px); border: 1px solid rgba(182,44,44,.3); background: rgba(255,255,255,.4); text-align: left; box-shadow: 0 18px 50px rgba(114,55,42,.06); }
+    .rsvp h3 { margin: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 8vw, 3rem); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+    .rsvp-intro { margin: 7px 0 27px; text-align: center; font-family: Allura, cursive; font-size: 1.35rem; }
+    .field { margin-bottom: 20px; }
+    .field > label, .field legend { display: block; margin-bottom: 8px; color: var(--red); font-size: .64rem; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; }
+    .field input, .field select, .field textarea { width: 100%; padding: 13px 2px; border: 0; border-bottom: 1px solid rgba(182,44,44,.45); border-radius: 0; color: #492c27; background: transparent; font: 400 .92rem Montserrat, sans-serif; outline: none; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--red); box-shadow: 0 2px 0 -1px var(--red); }
+    .field textarea { min-height: 76px; resize: vertical; }
+    .choice-field { padding: 0; border: 0; }
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .choice { position: relative; display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px; border: 1px solid rgba(182,44,44,.32); cursor: pointer; }
+    .choice input { position: absolute; opacity: 0; }
+    .choice:has(input:checked) { color: white; background: var(--red); border-color: var(--red); }
+    .choice span { font-size: .72rem; text-align: center; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; margin: 22px 0; color: #68524a; font-size: .66rem; line-height: 1.5; }
+    .consent input { margin-top: 2px; accent-color: var(--red); }
+    .submit-rsvp { display: block; width: 100%; padding: 15px 20px; border: 0; color: white; background: var(--red); font-size: .67rem; font-weight: 500; letter-spacing: .17em; text-transform: uppercase; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .submit-rsvp:hover { background: #922020; transform: translateY(-2px); }
+    .submit-rsvp:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+    .privacy { margin: 13px 0 0; color: #806b62; font-size: .57rem; line-height: 1.5; text-align: center; }
+    .success { display: none; margin: 25px 0 0; padding: 18px; color: var(--green); border: 1px solid rgba(79,128,82,.45); text-align: center; }
+    .success.is-visible { display: block; }
+    .honey { position: absolute !important; left: -9999px !important; }
 
     @keyframes arrive { from { opacity:0; transform:translateY(18px); } }
     @media (max-height: 670px) { .landing-inner { transform: scale(.84); } .invite { padding-top:28px; } }
@@ -217,6 +240,50 @@
         <h3 class="final-names">Pilar &amp; Rui</h3>
         <svg class="flower" viewBox="0 0 100 115" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.7"><path d="M49 109C51 81 49 55 53 28M50 74C36 67 29 58 25 46M51 64C65 58 72 49 78 38M48 88C62 85 72 77 81 66"/><circle cx="53" cy="23" r="9"/><path d="M53 14c-3-10 8-11 8-1 8-7 14 3 5 8 10 4 5 13-3 9-1 10-12 8-11-1-9 5-14-5-5-10-7-6-1-13 6-5ZM25 46c-12-5-16 7-5 10-6 9 7 14 11 4M78 38c11-7 17 4 7 10 8 8-4 15-10 6M81 66c11-5 15 7 4 11"/></g></svg>
         <p class="more">Mais detalhes em breve</p>
+        <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
+          <h3 id="rsvp-title">Confirmação</h3>
+          <p class="rsvp-intro">Esperamos celebrar contigo</p>
+          <form action="https://formsubmit.co/carlottalves@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nova confirmação — Casamento Pilar e Rui">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://calvheetos.github.io/casamento-rui-pilar/?confirmado=1#rsvp">
+            <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+            <div class="field">
+              <label for="guest-name">Nome completo</label>
+              <input id="guest-name" name="Nome" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="guest-email">Email</label>
+              <input id="guest-email" name="Email" type="email" autocomplete="email" required>
+            </div>
+            <fieldset class="field choice-field">
+              <legend>Vais estar presente?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="Presença" value="Sim, vou estar presente" required><span>Sim, com muito gosto!</span></label>
+                <label class="choice"><input type="radio" name="Presença" value="Não poderei estar presente" required><span>Não poderei estar</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="guest-count">Número de pessoas</label>
+              <select id="guest-count" name="Número de pessoas" required>
+                <option value="" selected disabled>Seleciona uma opção</option>
+                <option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option><option value="5">5 pessoas</option><option value="6">6 pessoas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="diet">Restrições alimentares</label>
+              <textarea id="diet" name="Restrições alimentares" placeholder="Alergias, intolerâncias ou preferências..."></textarea>
+            </div>
+            <div class="field">
+              <label for="message">Mensagem para os noivos <span aria-hidden="true">(opcional)</span></label>
+              <textarea id="message" name="Mensagem"></textarea>
+            </div>
+            <label class="consent"><input type="checkbox" name="Consentimento" value="Aceite" required><span>Autorizo a utilização destes dados apenas para a organização do casamento de Pilar e Rui.</span></label>
+            <button class="submit-rsvp" type="submit">Confirmar presença</button>
+            <p class="privacy">Os dados serão enviados para a organização do casamento através do serviço FormSubmit.</p>
+          </form>
+          <p class="success" id="successMessage" role="status">Obrigada! A tua resposta foi enviada com sucesso.</p>
+        </section>
         <svg class="flowers flowers--bottom" viewBox="0 0 440 105" aria-hidden="true">
           <path class="stem" d="M25 94C105 60 157 82 220 54 283 82 335 60 415 94"/>
           <g transform="translate(95 69)"><circle class="petal-pink" r="9" cy="-8"/><circle class="petal-pink" r="9" cx="8"/><circle class="petal-pink" r="9" cy="8"/><circle class="petal-pink" r="9" cx="-8"/><circle class="petal-yellow" r="5"/></g>
@@ -233,6 +300,7 @@
     const openInvite = document.querySelector('#openInvite');
     const resetInvite = document.querySelector('#resetInvite');
     const transitionLayer = document.querySelector('#transitionLayer');
+    const successMessage = document.querySelector('#successMessage');
 
     function revealInvite() {
       body.classList.add('animating');
@@ -253,6 +321,10 @@
 
     openInvite.addEventListener('click', revealInvite);
     resetInvite.addEventListener('click', reset);
+
+    if (new URLSearchParams(window.location.search).get('confirmado') === '1') {
+      successMessage.classList.add('is-visible');
+    }
   </script>
 </body>
 </html>
